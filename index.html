@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Tio Yudho Prasetio, Tio Yudho, Tio Prasetio, Tio">
+    <title>CryptUEU | RSA Encryption & Decryption UEU</title>
+    <link rel="stylesheet" href="assets/css/landingpage.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/script.js"></script>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/4413/4413865.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed flex justify-between py-3 w-full lg:px-48 md:px-12 px-4 content-center items-center bg-secondary z-10">
+        <div class="flex items-center">
+            <h3 class="font-montserrat font-medium text-xl mb-2"><a href="#home"><b>CryptUEU</b></a></h3>
+        </div>
+        <ul class="font-montserrat items-center hidden md:flex">
+            <li class="mx-3 ">
+                <a class="growing-underline" href="#cara">
+                    Cara kerja
+                </a>
+            </li>
+            <li class="growing-underline mx-3">
+                <a href="#fitur">Fitur</a>
+            </li>
+            <li class="growing-underline mx-3">
+                <a href="#mulai">Mulai</a>
+            </li>
+        </ul>
+        <div class="font-montserrat hidden md:block">
+            <!-- <button class="mr-6">Login</button> -->
+            <a href="#mulai" class="py-2 px-4 text-white bg-black rounded-3xl">
+                Mulai
+            </a>
+        </div>
+        <div id="showMenu" class="md:hidden">
+            <img src='assets/img/logos/Menu.svg' alt="" />
+        </div>
+    </nav>
+    <div id='mobileNav'
+        class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down">
+        <div id="hideMenu" class="flex justify-end">
+            <img src='assets/img/logos/Cross.svg' alt="" class="h-16 w-16" />
+        </div>
+        <ul id="nav" class="font-montserrat flex flex-col mx-8 my-24 items-center text-3xl">
+            <li class="my-6">
+                <a href="#cara">Cara kerja</a>
+            </li>
+            <li class="my-6">
+                <a href="#fitur">Fitur</a>
+            </li>
+            <li class="my-6">
+                <a href="#mulai">Mulai</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section id="home"
+        class="pt-24 max-sm:mb-5 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
+        <div class="md:flex-1 md:mr-10">
+            <h1 class="font-pt-serif text-5xl font-bold mb-7">
+                Crypt
+                <span class="bg-underline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
+                    UEU
+                </span>
+                ?
+            </h1>
+            <p class="font-pt-serif font-normal mb-7">
+                Program ini dibuat untuk mengenkripsi dan dekripsi sebuah pesan dengan Public Key dan Private Key
+            </p>
+            <div class="font-montserrat">
+                <a href="#mulai"
+                    class="bg-black px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2">
+                    Ayo coba!
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
+            <div class="relative">
+                <img src='assets/img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
+            </div>
+            <img src='assets/img/MacBook Pro.png' alt="" />
+            <div class="relative">
+                <img src='assets/img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="bg-black text-white sectionSize text-center" id="cara">
+        <div>
+            <h2 class="secondaryTitle bg-underline2 bg-100%">cara kerjanya?</h2>
+        </div>
+        <div class="md:grid md:grid-cols-2 md:grid-rows-2">
+            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    1
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Buat Kunci RSA</b></h3>
+                <p class="text-center font-montserrat">
+                    Generate kunci RSA dengan klik tombol <b>"Buat kunci RSA"</b> untuk mendapatkan public dan private
+                    key untuk menerima dan mengirim
+                    pesan.
+                </p>
+            </div>
+            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    2
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Kirim Pesan</b></h3>
+                <p class="text-center font-montserrat">
+                    Untuk dapat mengirim pesan, isikan Public Key dengan Public Key partner jika ingin <b>mengirim
+                        pesan</b>.
+                </p>
+            </div>
+            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    3
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Isi Pesan</b></h3>
+                <p class="text-center font-montserrat">
+                    Masukkan pesan pada kolom <b>"Masukkan Text"</b> untuk dienkripsi.
+                </p>
+            </div>
+            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    4
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Klik tombol Encrypt</b></h3>
+                <p class="text-center font-montserrat">
+                    Klik tombol <b>"Encrypt"</b> untuk menghasilkan teks terenkripsi.
+                </p>
+            </div>
+            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    5
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Dekripsi Pesan</b></h3>
+                <p class="text-center font-montserrat">
+                    Untuk dekripsi, masukkan teks terenkripsi dan private key anda pada kolom yang sesuai, kemudian klik
+                    tombol <b>"Decrypt"</b> untuk mendapatkan teks asli.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="sectionSize bg-secondary" id="fitur">
+        <div>
+            <h2 class="secondaryTitle bg-underline3 bg-100%">Fitur</h2>
+        </div>
+        <div class="md:grid md:grid-cols-2 md:grid-rows-2">
+
+            <div class="flex items-start font-montserrat my-6 mr-10">
+                <img src='assets/img/logos/Heart.svg' alt='' class="h-7 mr-4" />
+                <div>
+                    <h3 class="font-semibold text-2xl">Enkripsi Pesan</h3>
+                    <p>
+                        Program ini dibuat agar dapat mengenkripsi pesan yang sifatnya rahasia dengan mengubah pesan
+                        menjadi kombinasi huruf, angka, dan simbol yang sulit dimengerti manusia.
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-start font-montserrat my-6 mr-10">
+                <img src='assets/img/logos/Heart.svg' alt='' class="h-7 mr-4" />
+                <div>
+                    <h3 class="font-semibold text-2xl">Dekripsi Pesan</h3>
+                    <p>
+                        Hanya yang memiliki Private Key yang sesuai dengan Public Key yang dapat mengetahui isi pesan
+                        yang dikirimkan dengan melakukan dekripsi pesan.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="mulai" class="sectionSize bg-secondary py-0">
+        <div>
+            <h2 class="secondaryTitle bg-underline4 mb-0 bg-100%">Program</h2>
+        </div>
+        <div class="flex w-full flex-col md:flex-row">
+
+            <div
+                class='flex-1 items-center flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24'>
+                <h3 class="font-pt-serif font-normal text-2xl mb-4">
+                    CryptUEU Program
+                </h3>
+                <a href="twokey.html"
+                    class=" border-2 text-center border-solid border-black rounded-xl text-lg py-3 mt-4 mx-auto w-full">
+                    Coba Sekarang!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ  -->
+    <section class="sectionSize items-start pt-8 md:pt-36 bg-black text-white">
+        <div>
+            <h2 class="secondaryTitle bg-highlight3 p-10 mb-0 bg-center bg-100%">
+                FAQ
+            </h2>
+        </div>
+
+        <div toggleElement class="w-full py-4">
+            <div class="flex justify-between items-center">
+                <div question class="font-montserrat font-medium mr-auto">
+                    Apakah itu RSA?
+                </div>
+                <img src='assets/img/logos/CaretRight.svg' alt="" class="transform transition-transform" />
+            </div>
+            <div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+                RSA (Rivest Shamir Adleman) merupakan sebuah jenis algoritma asymmetric encryption yang diambil dari
+                nama penciptanya Ron Rivest, Adi Shamir dan Leonard
+                Adleman pada tahun 1977 dengan menggunakan konsep faktorisasi bilangan bulat besar.
+            </div>
+        </div>
+        <hr class="w-full bg-white" />
+
+        <div toggleElement class="w-full py-4">
+            <div class="flex justify-between items-center">
+                <div question class="font-montserrat font-medium mr-auto">
+                    Apakah ini gratis?
+                </div>
+                <img src='assets/img/logos/CaretRight.svg' alt="" class="transform transition-transform" />
+            </div>
+            <div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+                Yup! kamu bisa mencobanya secara gratis.
+            </div>
+        </div>
+        <hr class="w-full bg-white" />
+
+    </section>
+
+    <!-- Footer -->
+    <section class="bg-black sectionSize">
+        <div class="mb-4">
+            <h3 class="font-montserrat text-white text-lg">CryptUEU.</h3>
+        </div>
+        <div class="flex mb-8">
+            <a href="https://www.instagram.com/univ.esaunggul_bekasi" target="_blank">
+                <img src='assets/img/logos/Instagram.svg' alt="Instagram logo" class="mx-4" />
+            </a>
+        </div>
+        <div class="text-white max-sm:text-center font-montserrat text-sm">
+            &#169; 2025 Kriptografi <b>Univ.Esa Unggul Bekasi.</b> All right reserved
+        </div>
+    </section>
+</body>
+
+</html>

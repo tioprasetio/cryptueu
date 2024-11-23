@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptUEU | RSA Encryption & Decryption UEU</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/4413/4413865.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="judul">RSA Encryption & Decryption UEU</h1>
+
+        <div class="input-group">
+            <button onclick="generateKeys()"><i class="fa-solid fa-key"></i> Buat kunci RSA</button>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-globe"></i> Public Key:</label>
+            <textarea id="public-key" placeholder="Masukkan public key partner untuk dapat mengirim pesan atau klik buat kunci RSA untuk dapat menerima pesan"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-shield-halved"></i> Private Key:</label>
+            <textarea id="private-key" readonly></textarea>
+        </div>
+
+        <hr>
+
+        <h2 class="judul">Enkripsi</h2>
+        <div class="input-group">
+            <label for="text"><i class="fa-solid fa-pen-to-square"></i> Masukkan Text:</label>
+            <textarea id="text" placeholder="Masukkan text yang akan dienkripsi"></textarea>
+        </div>
+        <div class="input-group">
+            <button onclick="encryptData()"><i class="fa-solid fa-lock"></i> Enkripsi</button>
+        </div>
+        <div class="input-group">
+            <label><i class="fa-solid fa-lock"></i> Hasil Enkripsi:</label>
+            <textarea id="encrypted-output" readonly></textarea>
+        </div>
+
+        <hr>
+
+        <h2 class="judul">Dekripsi</h2>
+        <div class="input-group">
+            <label for="encrypted-input"><i class="fa-solid fa-lock"></i> Pesan Terenkripsi:</label>
+            <textarea id="encrypted-input" placeholder="Isikan pesan terenkripsi disini"></textarea>
+        </div>
+        <div class="input-group">
+            <label for="decrypt-private-key"><i class="fa-solid fa-shield-halved"></i> Private Key:</label>
+            <textarea id="decrypt-private-key" placeholder="Masukkan Private Key"></textarea>
+        </div>
+        <div class="input-group">
+            <button onclick="decryptData()"><i class="fa-solid fa-lock-open"></i> Dekripsi</button>
+        </div>
+        <div class="input-group">
+            <label><i class="fa-regular fa-square-check"></i> Hasil Dekripsi:</label>
+            <textarea id="decrypted-output" readonly></textarea>
+        </div>
+        <div class="input-group">
+            <button class="reset" onclick="reset()"><i class="fa-solid fa-repeat"></i> Muat Ulang</button>
+        </div>
+    </div>
+
+    <footer>
+        <span>&#169; 2025 Kriptografi <b>Univ.Esa Unggul Bekasi.</b> All right reserved</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
