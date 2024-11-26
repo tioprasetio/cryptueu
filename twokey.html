@@ -21,7 +21,7 @@
 
         <div class="input-group">
             <label><i class="fa-solid fa-globe"></i> Public Key:</label>
-            <textarea id="public-key" placeholder="Masukkan public key partner untuk dapat mengirim pesan atau klik buat kunci RSA untuk dapat menerima pesan"></textarea>
+            <textarea id="public-key" readonly></textarea>
         </div>
 
         <div class="input-group">
@@ -35,6 +35,10 @@
         <div class="input-group">
             <label for="text"><i class="fa-solid fa-pen-to-square"></i> Masukkan Text:</label>
             <textarea id="text" placeholder="Masukkan text yang akan dienkripsi"></textarea>
+        </div>
+        <div class="input-group">
+            <label><i class="fa-solid fa-globe"></i> Public Key:</label>
+            <textarea id="encryption-public-key"></textarea>
         </div>
         <div class="input-group">
             <button onclick="encryptData()"><i class="fa-solid fa-lock"></i> Enkripsi</button>

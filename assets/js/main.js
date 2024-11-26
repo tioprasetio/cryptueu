@@ -1,10 +1,14 @@
 let publicKey, privateKey;
 
 const privateKeyTextarea = document.getElementById("private-key");
+const publicKeyTextarea = document.getElementById("public-key");
 
 // Pastikan tetap readonly meskipun properti dihapus
 privateKeyTextarea.addEventListener("focus", () => {
   privateKeyTextarea.readOnly = true; // Kembalikan readonly jika dihapus
+});
+publicKeyTextarea.addEventListener("focus", () => {
+  publicKeyTextarea.readOnly = true; // Kembalikan readonly jika dihapus
 });
 
 // START MEMBUAT KUNCI RSA
@@ -66,7 +70,7 @@ async function encryptData() {
       return;
     }
 
-    const publicKeyPem = document.getElementById("public-key").value.trim();
+    const publicKeyPem = document.getElementById("encryption-public-key").value.trim();
     if (!publicKeyPem) {
       Swal.fire({
         icon: "error",
@@ -191,6 +195,7 @@ function reset() {
   document.getElementById("text").value = "";
   document.getElementById("public-key").value = "";
   document.getElementById("private-key").value = "";
+  document.getElementById("encryption-public-key").value = "";
   document.getElementById("encrypted-output").value = "";
   document.getElementById("encrypted-input").value = "";
   document.getElementById("decrypt-private-key").value = "";
