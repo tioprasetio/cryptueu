@@ -34,3 +34,39 @@ window.addEventListener("load", function () {
     });
   });
 });
+
+/*==================== SCROLL REVEAL ANIMATION ====================*/
+document.addEventListener("DOMContentLoaded", () => {
+  ScrollReveal().reveal(".judul", {
+    duration: 2000, // Durasi animasi dalam milidetik
+    origin: "top", // Asal animasi dari bawah
+    distance: "30px", // Jarak elemen bergerak
+    reset: true, // Ulangi animasi setiap kali elemen muncul
+  });
+  ScrollReveal().reveal(
+    ".macbook, .cara-kerja2, .cara-kerja3, .cara-kerja4, .cara-kerja5, .fitur1, .box-crypt",
+    {
+      duration: 2000, // Durasi animasi dalam milidetik
+      origin: "bottom", // Asal animasi dari bawah
+      distance: "30px", // Jarak elemen bergerak
+      reset: true, // Ulangi animasi setiap kali elemen muncul
+    }
+  );
+  ScrollReveal().reveal(
+    ".fitur2",
+    {
+      duration: 2000, // Durasi animasi dalam milidetik
+      origin: "bottom", // Asal animasi dari bawah
+      distance: "30px", // Jarak elemen bergerak
+      delay: 400,
+      reset: true, // Ulangi animasi setiap kali elemen muncul
+    }
+  );
+  ScrollReveal().reveal(".btn-ayo", {
+    duration: 2000, // Durasi animasi dalam milidetik
+    origin: "bottom", // Asal animasi dari bawah
+    distance: "30px", // Jarak elemen bergerak
+    delay: 3500,
+    reset: false, // Ulangi animasi setiap kali elemen muncul
+  });
+});

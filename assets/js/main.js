@@ -23,6 +23,15 @@ async function generateKeys() {
     const p = parseInt(document.getElementById("prime-p").value.trim());
     const q = parseInt(document.getElementById("prime-q").value.trim());
 
+    if (p === "" || q === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Input Kosong",
+        text: "Nilai p dan q tidak boleh kosong.",
+      });
+      return;
+    }
+
     // Validasi apakah p dan q adalah bilangan prima, jika tudak naka error
     if (!isPrime(p)) {
       Swal.fire({
@@ -104,12 +113,35 @@ async function generateKeys() {
 // START ENKRIPSI DATA
 function encryptData() {
   try {
+    const inputPublicKey = document
+      .getElementById("encryption-public-key")
+      .value.trim();
     const text = document.getElementById("text").value.trim();
     if (!text) {
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Mohon masukkan text yang akan dienkripsi.",
+      });
+      return;
+    }
+
+    if (!inputPublicKey) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Mohon masukkan Public Key untuk proses Enkripsi.",
+      });
+      return;
+    }
+
+    // Memvalidasi format public key: Harus sesuai dengan format "e: nilai, n: nilai"
+    const publicKeyPattern = /^e:\s*\d+\s*,\s*n:\s*\d+$/;
+    if (!publicKeyPattern.test(inputPublicKey)) {
+      Swal.fire({
+        icon: "error",
+        title: "Enkripsi Gagal",
+        text: "Format Public Key tidak valid. Harus sesuai dengan format 'e: nilai, n: nilai'.",
       });
       return;
     }
@@ -160,11 +192,35 @@ function decryptData() {
     const encryptedText = document
       .getElementById("encrypted-input")
       .value.trim();
+    const inputPrivateKey = document
+      .getElementById("decrypt-private-key")
+      .value.trim();
+
     if (!encryptedText) {
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Masukkan teks terenkripsi.",
+      });
+      return;
+    }
+
+    if (!inputPrivateKey) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Mohon masukkan Private Key untuk proses Dekripsi.",
+      });
+      return;
+    }
+
+    // Memvalidasi format public key: Harus sesuai dengan format "d: nilai, n: nilai"
+    const privateKeyPattern = /^d:\s*\d+\s*,\s*n:\s*\d+$/;
+    if (!privateKeyPattern.test(inputPrivateKey)) {
+      Swal.fire({
+        icon: "error",
+        title: "Enkripsi Gagal",
+        text: "Format Private Key tidak valid. Harus sesuai dengan format 'd: nilai, n: nilai'.",
       });
       return;
     }
@@ -241,12 +297,12 @@ document.addEventListener("DOMContentLoaded", function () {
     title: "Panduan Penggunaan",
     html: `
         <ul style="text-align: left; list-style: disc; margin-left: 20px;">
-          <li>Generate kunci RSA dengan klik tombol <b>"Buat kunci RSA"</b> untuk mendapatkan public dan private key untuk menerima dan mengirim pesan.</li>
-          <li>Masukkan public key partner jika akan <b>mengirim pesan</b>.</li>
+          <li>Inputkan <b>bilangan prima P</b> dan <b>bilangan prima q</b>.</li>
+          <li>Generate kunci RSA dengan klik tombol <b>"Buat kunci RSA"</b> untuk mendapatkan public dan private key.</li>
           <li>Masukkan pesan pada kolom <b>"Masukkan Text"</b> untuk dienkripsi.</li>
-          <li>Klik tombol <b>"Encrypt"</b> untuk menghasilkan teks terenkripsi.</li>
+          <li>Klik tombol <b>"Enkripsi"</b> untuk menghasilkan teks terenkripsi.</li>
           <li>Untuk dekripsi, masukkan teks terenkripsi dan private key anda pada kolom yang sesuai.</li>
-          <li>Klik tombol <b>"Decrypt"</b> untuk mendapatkan teks asli.</li>
+          <li>Klik tombol <b>"Dekripsi"</b> untuk mendapatkan teks asli.</li>
         </ul>
       `,
     icon: "info",

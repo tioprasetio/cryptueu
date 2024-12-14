@@ -8,7 +8,6 @@
     <title>CryptUEU | RSA Encryption & Decryption UEU</title>
     <link rel="stylesheet" href="assets/css/landingpage.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/script.js"></script>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/4413/4413865.png" type="image/x-icon">
 </head>
 
@@ -63,17 +62,15 @@
     <section id="home"
         class="pt-24 max-sm:mb-5 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
         <div class="md:flex-1 md:mr-10">
-            <h1 class="font-pt-serif text-5xl font-bold mb-7">
+            <h1 class="judul font-pt-serif text-5xl font-bold mb-7">
                 Crypt
                 <span class="bg-underline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
                     UEU
                 </span>
                 ?
             </h1>
-            <p class="font-pt-serif font-normal mb-7">
-                Program ini dibuat untuk mengenkripsi dan dekripsi sebuah pesan dengan Public Key dan Private Key
-            </p>
-            <div class="font-montserrat">
+            <p class="subtitle font-pt-serif font-normal mb-7"></p>
+            <div class="btn-ayo font-montserrat">
                 <a href="#mulai"
                     class="bg-black px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2">
                     Ayo coba!
@@ -84,7 +81,7 @@
             <div class="relative">
                 <img src='assets/img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
             </div>
-            <img src='assets/img/MacBook Pro.png' alt="" />
+            <img class="macbook" src='assets/img/MacBook Pro.png' alt="" />
             <div class="relative">
                 <img src='assets/img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
             </div>
@@ -97,10 +94,20 @@
             <h2 class="secondaryTitle bg-underline2 bg-100%">cara kerjanya?</h2>
         </div>
         <div class="md:grid md:grid-cols-2 md:grid-rows-2">
-            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+            <div class="cara-kerja1 flex-1 mx-8 flex flex-col items-center my-4">
                 <div
                     class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
                     1
+                </div>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Isi bilang prima P dan Q</b></h3>
+                <p class="text-center font-montserrat">
+                    Untuk mendapatkan Public Key dan Private Key, diwajibkan untuk menginputkan Bilangan Prima P dan Q.
+                </p>
+            </div>
+            <div class="cara-kerja2 flex-1 mx-8 flex flex-col items-center my-4">
+                <div
+                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+                    2
                 </div>
                 <h3 class="font-montserrat font-medium text-xl mb-2"><b>Buat Kunci RSA</b></h3>
                 <p class="text-center font-montserrat">
@@ -109,18 +116,7 @@
                     pesan.
                 </p>
             </div>
-            <div class="flex-1 mx-8 flex flex-col items-center my-4">
-                <div
-                    class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
-                    2
-                </div>
-                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Kirim Pesan</b></h3>
-                <p class="text-center font-montserrat">
-                    Untuk dapat mengirim pesan, isikan Public Key dengan Public Key partner jika ingin <b>mengirim
-                        pesan</b>.
-                </p>
-            </div>
-            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+            <div class="cara-kerja3 flex-1 mx-8 flex flex-col items-center my-4">
                 <div
                     class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
                     3
@@ -130,17 +126,17 @@
                     Masukkan pesan pada kolom <b>"Masukkan Text"</b> untuk dienkripsi.
                 </p>
             </div>
-            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+            <div class="cara-kerja4 flex-1 mx-8 flex flex-col items-center my-4">
                 <div
                     class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
                     4
                 </div>
-                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Klik tombol Encrypt</b></h3>
+                <h3 class="font-montserrat font-medium text-xl mb-2"><b>Klik tombol Enkripsi</b></h3>
                 <p class="text-center font-montserrat">
-                    Klik tombol <b>"Encrypt"</b> untuk menghasilkan teks terenkripsi.
+                    Klik tombol <b>"Enkripsi"</b> untuk menghasilkan teks terenkripsi.
                 </p>
             </div>
-            <div class="flex-1 mx-8 flex flex-col items-center my-4">
+            <div class="cara-kerja5 flex-1 mx-8 flex flex-col items-center my-4">
                 <div
                     class="border-2 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
                     5
@@ -148,7 +144,7 @@
                 <h3 class="font-montserrat font-medium text-xl mb-2"><b>Dekripsi Pesan</b></h3>
                 <p class="text-center font-montserrat">
                     Untuk dekripsi, masukkan teks terenkripsi dan private key anda pada kolom yang sesuai, kemudian klik
-                    tombol <b>"Decrypt"</b> untuk mendapatkan teks asli.
+                    tombol <b>"Dekripsi"</b> untuk mendapatkan teks asli.
                 </p>
             </div>
         </div>
@@ -161,17 +157,17 @@
         </div>
         <div class="md:grid md:grid-cols-2 md:grid-rows-2">
 
-            <div class="flex items-start font-montserrat my-6 mr-10">
+            <div class="fitur1 flex items-start font-montserrat my-6 mr-10">
                 <img src='assets/img/logos/Heart.svg' alt='' class="h-7 mr-4" />
                 <div>
                     <h3 class="font-semibold text-2xl">Enkripsi Pesan</h3>
                     <p>
-                        Program ini dibuat agar dapat mengenkripsi pesan yang sifatnya rahasia dengan mengubah pesan
-                        menjadi kombinasi huruf, angka, dan simbol yang sulit dimengerti manusia.
+                        Program ini dibuat agar dapat mengenkripsi pesan yang sifatnya rahasia dengan mengubah pesan biasa
+                        menjadi pesan yang sulit dipecahkan.
                     </p>
                 </div>
             </div>
-            <div class="flex items-start font-montserrat my-6 mr-10">
+            <div class="fitur2 flex items-start font-montserrat my-6 mr-10">
                 <img src='assets/img/logos/Heart.svg' alt='' class="h-7 mr-4" />
                 <div>
                     <h3 class="font-semibold text-2xl">Dekripsi Pesan</h3>
@@ -190,7 +186,7 @@
         <div>
             <h2 class="secondaryTitle bg-underline4 mb-0 bg-100%">Program</h2>
         </div>
-        <div class="flex w-full flex-col md:flex-row">
+        <div class="box-crypt flex w-full flex-col md:flex-row">
 
             <div
                 class='flex-1 items-center flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24'>
@@ -254,9 +250,24 @@
             </a>
         </div>
         <div class="text-white max-sm:text-center font-montserrat text-sm">
-            &#169; 2025 Kriptografi <b>Univ.Esa Unggul Bekasi.</b> All right reserved
+            &#169; 2024 Kriptografi Fasilkom <b><a href="https://www.instagram.com/univ.esaunggul_bekasi" target="_blank">Univ.Esa Unggul Bekasi.</a></b> All right reserved.
         </div>
     </section>
+
+    <script src="assets/js/script.js"></script>
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!--========== GSAP ANIMATION ==========-->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/TextPlugin.min.js"></script>
+
+    <script>
+        gsap.to(".subtitle", {
+                duration: 2.5,
+                delay: 1.6,
+                text: "Program ini dibuat untuk mengenkripsi dan dekripsi sebuah pesan dengan Public Key dan Private Key",
+            });
+    </script>
 </body>
 
 </html>
