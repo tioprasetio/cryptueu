@@ -18,16 +18,27 @@ function isPrime(num) {
 
 // START MEMBUAT KUNCI RSA
 async function generateKeys() {
+  console.clear();
   try {
     // Ambil nilai p dan q dari input
     const p = parseInt(document.getElementById("prime-p").value.trim());
     const q = parseInt(document.getElementById("prime-q").value.trim());
 
-    if (p === "" || q === "") {
+    if (isNaN(p) || isNaN(q)) {
       Swal.fire({
         icon: "error",
         title: "Input Kosong",
         text: "Nilai p dan q tidak boleh kosong.",
+      });
+      return;
+    }
+
+    // Validasi jika p dan q sama
+    if (p === q) {
+      Swal.fire({
+        icon: "error",
+        title: "Input Tidak Valid",
+        text: "Nilai p dan q tidak boleh sama.",
       });
       return;
     }
@@ -91,13 +102,17 @@ async function generateKeys() {
     console.log("Detail Kunci RSA:");
     console.log(`n (p * q): ${n}`);
     console.log(`m ((p - 1) * (q - 1)): ${m}`);
-    console.log(`Kunci Public (e): ${e}`);
-    console.log(`Kunci Private (d): ${d}`);
+    console.log(
+      `Kunci Public (e): ${e} (bilangan terkecil yang relatif prima dengan m=${m})`
+    );
+    console.log(
+      `Kunci Private (d): ${d} (nilai d yang memenuhi (d * e) % m = 1)`
+    );
 
     Swal.fire({
       icon: "success",
       title: "Kunci RSA Terbuat",
-      text: "Jaga kerahasiaan Private key ya! enjoy."
+      text: "Jaga kerahasiaan Private key ya! enjoy.",
     });
   } catch (error) {
     Swal.fire({
