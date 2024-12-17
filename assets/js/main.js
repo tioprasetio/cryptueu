@@ -33,6 +33,24 @@ async function generateKeys() {
       return;
     }
 
+    if (isNaN(p) || p < 11) {
+      Swal.fire({
+        icon: "error",
+        title: "Input minimal 11",
+        text: "Inputan harus bernilai minimal 11.",
+      });
+      return;
+    }
+
+    if (q < p && q < 11) {
+      Swal.fire({
+        icon: "error",
+        title: "Input Tidak Valid",
+        text: "Nilai q tidak boleh lebih kecil dari p jika nilainya di bawah 11.",
+      });
+      return;
+    }
+
     // Validasi jika p dan q sama
     if (p === q) {
       Swal.fire({
