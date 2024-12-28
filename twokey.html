@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptUEU | RSA Encryption & Decryption UEU</title>
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
@@ -13,6 +15,13 @@
 
 <body>
     <div class="container">
+        <div id="customAlert" class="alert hidden">
+            <span id="alertMessage">Pesan notifikasi</span>
+            <a class="close-btn" onclick="hideAlert()">
+                <i class="ri-close-line"></i>
+            </a>
+        </div>
+
         <h1 class="judul">RSA Encryption & Decryption UEU</h1>
 
         <div class="input-group">

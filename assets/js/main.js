@@ -1,3 +1,29 @@
+// Fungsi notifikasi sukses
+function showAlert(message, type = "success") {
+  const alertBox = document.getElementById("customAlert");
+  const alertMessage = document.getElementById("alertMessage");
+
+  // Pilih ikon berdasarkan tipe
+  const icon =
+    type === "success"
+      ? '<i class="ri-checkbox-circle-line"></i>&nbsp;'
+      : '<i class="ri-close-circle-line"></i>&nbsp;';
+
+  // Set pesan dengan ikon
+  alertMessage.innerHTML = `${icon}${message}`;
+  alertBox.className = `alert ${type}`; // Tambahkan kelas tipe
+  alertBox.classList.remove("hidden"); // Tampilkan alert
+
+  // Sembunyikan alert secara otomatis setelah 3 detik
+  setTimeout(hideAlert, 3000);
+}
+
+// Fungsi menyembunyikan notifikasi
+function hideAlert() {
+  const alertBox = document.getElementById("customAlert");
+  alertBox.classList.add("hidden");
+}
+
 let publicKey, privateKey;
 
 // Fungsi untuk menghitung GCD
@@ -25,58 +51,37 @@ async function generateKeys() {
     const q = parseInt(document.getElementById("prime-q").value.trim());
 
     if (isNaN(p) || isNaN(q)) {
-      Swal.fire({
-        icon: "error",
-        title: "Input Kosong",
-        text: "Nilai p dan q tidak boleh kosong.",
-      });
+      showAlert("Nilai p dan q tidak boleh kosong", "error");
       return;
     }
 
     if (isNaN(p) || p < 11) {
-      Swal.fire({
-        icon: "error",
-        title: "Input minimal 11",
-        text: "Inputan harus bernilai minimal 11.",
-      });
+      showAlert("Inputan harus bernilai minimal 11", "error");
       return;
     }
 
     if (q < p && q < 11) {
-      Swal.fire({
-        icon: "error",
-        title: "Input Tidak Valid",
-        text: "Nilai q tidak boleh lebih kecil dari p jika nilainya di bawah 11.",
-      });
+      showAlert(
+        "Nilai q tidak boleh lebih kecil dari p jika nilainya di bawah 11",
+        "error"
+      );
       return;
     }
 
     // Validasi jika p dan q sama
     if (p === q) {
-      Swal.fire({
-        icon: "error",
-        title: "Input Tidak Valid",
-        text: "Nilai p dan q tidak boleh sama.",
-      });
+      showAlert("Nilai p dan q tidak boleh sama", "error");
       return;
     }
 
     // Validasi apakah p dan q adalah bilangan prima, jika tudak naka error
     if (!isPrime(p)) {
-      Swal.fire({
-        icon: "error",
-        title: "Input Tidak Valid",
-        text: "Nilai p harus bilangan prima.",
-      });
+      showAlert("Nilai p harus bilangan prima", "error");
       return;
     }
 
     if (!isPrime(q)) {
-      Swal.fire({
-        icon: "error",
-        title: "Input Tidak Valid",
-        text: "Nilai q harus bilangan prima.",
-      });
+      showAlert("Nilai q harus bilangan prima", "error");
       return;
     }
 
@@ -95,11 +100,7 @@ async function generateKeys() {
 
     // Jika tidak ada nilai e yang valid, akan error
     if (e === 0) {
-      Swal.fire({
-        icon: "error",
-        title: "Kesalahan",
-        text: "Tidak dapat menemukan nilai e yang valid.",
-      });
+      showAlert("Tidak dapat menemukan nilai e yang valid", "error");
       return;
     }
 
@@ -127,17 +128,12 @@ async function generateKeys() {
       `Kunci Private (d): ${d} (nilai d yang memenuhi (d * e) % m = 1)`
     );
 
-    Swal.fire({
-      icon: "success",
-      title: "Kunci RSA Terbuat",
-      text: "Jaga kerahasiaan Private key ya! enjoy.",
-    });
+    showAlert("Jaga kerahasiaan Private key ya! enjoy", "success");
   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Gagal Membuat Kunci",
-      text: "Terjadi kesalahan saat membuat kunci RSA. Silakan coba lagi.",
-    });
+    showAlert(
+      "Terjadi kesalahan saat membuat kunci RSA. Silakan coba lagi",
+      "error"
+    );
     console.error(error);
   }
 }
@@ -151,31 +147,22 @@ function encryptData() {
       .value.trim();
     const text = document.getElementById("text").value.trim();
     if (!text) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Mohon masukkan text yang akan dienkripsi.",
-      });
+      showAlert("Mohon masukkan text yang akan dienkripsi", "error");
       return;
     }
 
     if (!inputPublicKey) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Mohon masukkan Public Key untuk proses Enkripsi.",
-      });
+      showAlert("Mohon masukkan Public Key untuk proses Enkripsi", "error");
       return;
     }
 
     // Memvalidasi format public key: Harus sesuai dengan format "e: nilai, n: nilai"
     const publicKeyPattern = /^e:\s*\d+\s*,\s*n:\s*\d+$/;
     if (!publicKeyPattern.test(inputPublicKey)) {
-      Swal.fire({
-        icon: "error",
-        title: "Enkripsi Gagal",
-        text: "Format Public Key tidak valid. Harus sesuai dengan format 'e: nilai, n: nilai'.",
-      });
+      showAlert(
+        "Format Public Key tidak valid. Harus sesuai dengan format 'e: nilai, n: nilai'",
+        "error"
+      );
       return;
     }
 
@@ -202,17 +189,12 @@ function encryptData() {
     });
     console.log("Hasil Enkripsi:", encrypted.join(", "));
 
-    Swal.fire({
-      icon: "success",
-      title: "Enkripsi Berhasil",
-      text: "Selamat! Pesan kamu sekarang terenkripsi.",
-    });
+    showAlert("Selamat! Pesan kamu sekarang terenkripsi", "success");
   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Enkripsi gagal",
-      text: "Terjadi kesalahan saat Enkripsi. Pastikan kunci Public valid.",
-    });
+    showAlert(
+      "Terjadi kesalahan saat Enkripsi. Pastikan kunci Public valid",
+      "error"
+    );
     console.error(error);
   }
 }
@@ -230,31 +212,22 @@ function decryptData() {
       .value.trim();
 
     if (!encryptedText) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Masukkan teks terenkripsi.",
-      });
+      showAlert("Masukkan teks terenkripsi", "error");
       return;
     }
 
     if (!inputPrivateKey) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Mohon masukkan Private Key untuk proses Dekripsi.",
-      });
+      showAlert("Mohon masukkan Private Key untuk proses Dekripsi", "error");
       return;
     }
 
     // Memvalidasi format public key: Harus sesuai dengan format "d: nilai, n: nilai"
     const privateKeyPattern = /^d:\s*\d+\s*,\s*n:\s*\d+$/;
     if (!privateKeyPattern.test(inputPrivateKey)) {
-      Swal.fire({
-        icon: "error",
-        title: "Enkripsi Gagal",
-        text: "Format Private Key tidak valid. Harus sesuai dengan format 'd: nilai, n: nilai'.",
-      });
+      showAlert(
+        "Format Private Key tidak valid. Harus sesuai dengan format 'd: nilai, n: nilai'",
+        "error"
+      );
       return;
     }
 
@@ -285,17 +258,10 @@ function decryptData() {
     });
     console.log("Hasil Dekripsi:", decrypted);
 
-    Swal.fire({
-      icon: "success",
-      title: "Dekripsi Berhasil",
-      text: "Selamat! Pesan kamu berhasil didekripsi.",
-    });
+    showAlert("Selamat! Pesan kamu berhasil didekripsi", "success");
+
   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Dekripsi Gagal",
-      text: "Pastikan teks terenkripsi dan Private Key benar.",
-    });
+    showAlert("Pastikan teks terenkripsi dan Private Key benar", "error");
     console.error(error);
   }
 }
@@ -316,11 +282,7 @@ function reset() {
   document.getElementById("decrypted-output").value = "";
   console.clear();
 
-  Swal.fire({
-    icon: "success",
-    title: "Dikosongkan",
-    text: "Semua inputan sudah berhasil dibersihkan. Enjoy!",
-  });
+  showAlert("Semua inputan sudah berhasil dibersihkan. Enjoy!", "success");
 }
 // END FUNGSI MUAT ULANG
 
