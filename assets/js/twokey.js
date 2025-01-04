@@ -1,3 +1,4 @@
+// .value.trim() untuk hapus spasi di awal dan akhir input
 // Fungsi notifikasi sukses
 function showAlert(message, type = "success") {
   const alertBox = document.getElementById("customAlert");
@@ -47,8 +48,8 @@ async function generateKeys() {
   console.clear();
   try {
     // Ambil nilai p dan q dari input
-    const p = parseInt(document.getElementById("prime-p").value.trim());
-    const q = parseInt(document.getElementById("prime-q").value.trim());
+    const p = parseInt(document.getElementById("prime-p").value);
+    const q = parseInt(document.getElementById("prime-q").value);
 
     if (isNaN(p) || isNaN(q)) {
       showAlert("Nilai p dan q tidak boleh kosong", "error");
@@ -142,10 +143,10 @@ async function generateKeys() {
 // START ENKRIPSI DATA
 function encryptData() {
   try {
-    const inputPublicKey = document
-      .getElementById("encryption-public-key")
-      .value.trim();
-    const text = document.getElementById("text").value.trim();
+    const inputPublicKey = document.getElementById(
+      "encryption-public-key"
+    ).value;
+    const text = document.getElementById("text").value;
     if (!text) {
       showAlert("Mohon masukkan text yang akan dienkripsi", "error");
       return;
@@ -157,7 +158,7 @@ function encryptData() {
     }
 
     // Memvalidasi format public key: Harus sesuai dengan format "e: nilai, n: nilai"
-    const publicKeyPattern = /^e:\s*\d+\s*,\s*n:\s*\d+$/;
+    const publicKeyPattern = /^e: \d+, n: \d+$/;
     if (!publicKeyPattern.test(inputPublicKey)) {
       showAlert(
         "Format Public Key tidak valid. Harus sesuai dengan format 'e: nilai, n: nilai'",
@@ -204,12 +205,13 @@ function encryptData() {
 // START DEKRIPSI DATA
 function decryptData() {
   try {
-    const encryptedText = document
-      .getElementById("encrypted-input")
-      .value.trim();
-    const inputPrivateKey = document
-      .getElementById("decrypt-private-key")
-      .value.trim();
+    const encryptedText = document.getElementById("encrypted-input").value;
+    const inputPrivateKey = document.getElementById(
+      "decrypt-private-key"
+    ).value;
+    const inputPublicKey = document.getElementById(
+      "encryption-public-key"
+    ).value;
 
     if (!encryptedText) {
       showAlert("Masukkan teks terenkripsi", "error");
@@ -222,13 +224,27 @@ function decryptData() {
     }
 
     // Memvalidasi format public key: Harus sesuai dengan format "d: nilai, n: nilai"
-    const privateKeyPattern = /^d:\s*\d+\s*,\s*n:\s*\d+$/;
+    const privateKeyPattern = /^d: \d+, n: \d+$/;
     if (!privateKeyPattern.test(inputPrivateKey)) {
       showAlert(
         "Format Private Key tidak valid. Harus sesuai dengan format 'd: nilai, n: nilai'",
         "error"
       );
       return;
+    }
+
+    // Validasi Public Key dan Private Key, jika public key pada enkrip sama dengan generate maka private key pada dekrip harus sama jg pada generate
+    const currentPublicKey = `e: ${publicKey.e}, n: ${publicKey.n}`;
+    const currentPrivateKey = `d: ${privateKey.d}, n: ${privateKey.n}`;
+
+    if (inputPublicKey === currentPublicKey) {
+      if (inputPrivateKey !== currentPrivateKey) {
+        showAlert(
+          "Private Key tidak valid untuk Public Key yang diberikan!",
+          "error"
+        );
+        return;
+      }
     }
 
     const encryptedArray = encryptedText.split(",").map((code) => BigInt(code));
@@ -259,7 +275,6 @@ function decryptData() {
     console.log("Hasil Dekripsi:", decrypted);
 
     showAlert("Selamat! Pesan kamu berhasil didekripsi", "success");
-
   } catch (error) {
     showAlert("Pastikan teks terenkripsi dan Private Key benar", "error");
     console.error(error);
