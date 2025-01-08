@@ -25,6 +25,7 @@ function hideAlert() {
   alertBox.classList.add("hidden");
 }
 
+// start generate key
 let publicKey, privateKey;
 
 // Fungsi untuk menghitung GCD
@@ -143,10 +144,16 @@ async function generateKeys() {
 // START ENKRIPSI DATA
 function encryptData() {
   try {
+    const { e, n } = publicKey;
+
     const inputPublicKey = document.getElementById(
       "encryption-public-key"
     ).value;
+
+    const fixPublicKey = `e: ${e}, n: ${n}`;
+
     const text = document.getElementById("text").value;
+
     if (!text) {
       showAlert("Mohon masukkan text yang akan dienkripsi", "error");
       return;
@@ -167,7 +174,11 @@ function encryptData() {
       return;
     }
 
-    const { e, n } = publicKey;
+    if (inputPublicKey != fixPublicKey) {
+      showAlert("Public key tidak sama", "error");
+      return;
+    }
+
     const bigN = BigInt(n); // Konversi ke BigInt
     const bigE = BigInt(e);
 
@@ -205,13 +216,15 @@ function encryptData() {
 // START DEKRIPSI DATA
 function decryptData() {
   try {
+    const { d, n } = privateKey;
+
     const encryptedText = document.getElementById("encrypted-input").value;
+
     const inputPrivateKey = document.getElementById(
       "decrypt-private-key"
     ).value;
-    const inputPublicKey = document.getElementById(
-      "encryption-public-key"
-    ).value;
+
+    const fixPrivateKey = `d: ${d}, n: ${n}`;
 
     if (!encryptedText) {
       showAlert("Masukkan teks terenkripsi", "error");
@@ -233,22 +246,12 @@ function decryptData() {
       return;
     }
 
-    // Validasi Public Key dan Private Key, jika public key pada enkrip sama dengan generate maka private key pada dekrip harus sama jg pada generate
-    const currentPublicKey = `e: ${publicKey.e}, n: ${publicKey.n}`;
-    const currentPrivateKey = `d: ${privateKey.d}, n: ${privateKey.n}`;
-
-    if (inputPublicKey === currentPublicKey) {
-      if (inputPrivateKey !== currentPrivateKey) {
-        showAlert(
-          "Private Key tidak valid untuk Public Key yang diberikan!",
-          "error"
-        );
-        return;
-      }
+    if (inputPrivateKey != fixPrivateKey) {
+      showAlert("Private key tidak sama", "error");
+      return;
     }
 
     const encryptedArray = encryptedText.split(",").map((code) => BigInt(code));
-    const { d, n } = privateKey;
     const bigN = BigInt(n); // Konversi ke BigInt
     const bigD = BigInt(d);
 
@@ -307,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
     title: "Panduan Penggunaan",
     html: `
         <ul style="text-align: left; list-style: disc; margin-left: 20px;">
-          <li>Inputkan <b>bilangan prima P</b> dan <b>bilangan prima q</b>.</li>
+          <li>Inputkan <b>bilangan prima p</b> dan <b>bilangan prima q</b>.</li>
           <li>Generate kunci RSA dengan klik tombol <b>"Buat kunci RSA"</b> untuk mendapatkan public dan private key.</li>
           <li>Masukkan pesan pada kolom <b>"Masukkan Text"</b> untuk dienkripsi.</li>
           <li>Klik tombol <b>"Enkripsi"</b> untuk menghasilkan teks terenkripsi.</li>
